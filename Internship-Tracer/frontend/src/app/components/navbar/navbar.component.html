@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <a routerLink="/applications" class="navbar-brand">
+      <span class="brand-mark">📋 InternTracker</span>
+      <span class="brand-sub">Manage your internship applications</span>
+    </a>
+
+    <div class="nav-links">
+      <a routerLink="/applications" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+        Dashboard
+      </a>
+      <a routerLink="/create" routerLinkActive="active" class="nav-cta">
+        <span>+</span> New Application
+      </a>
+    </div>
+  </div>
+</nav>
