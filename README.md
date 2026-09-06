@@ -50,3 +50,7 @@ npm run build
 cd ../frontend
 npm run build
 ```
+
+## Contributors
+
+- **[Jai Revanth Dev Chitturi](https://github.com/chitturijairevanthdev-gif)**
