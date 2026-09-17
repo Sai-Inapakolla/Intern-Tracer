@@ -31,7 +31,9 @@ async function uploadToCloudinary(fileBuffer, originalFilename) {
       {
         folder: 'internship-tracker/resumes',
         resource_type: 'raw',
-        public_id: filenameWithExt
+        public_id: filenameWithExt,
+        type: 'upload',
+        access_mode: 'public'
       },
       (error, result) => {
         if (error) {
