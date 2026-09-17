@@ -35,182 +35,59 @@
   max-width: 480px;
 }
 
-/* Pipeline Card Visual */
-.pipeline-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
+/* Feature Workflow Stack */
+.feature-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 6px;
 }
 
-.pipeline-header {
+.feature-card {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  transition: border-color var(--transition);
 }
 
-.company-badge {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.feature-card:hover {
+  border-color: #3e434c;
 }
 
-.company-logo {
+.feature-icon-wrapper {
   width: 36px;
   height: 36px;
   border-radius: var(--radius-xs);
   background: #252930;
   border: 1px solid var(--color-border);
   color: var(--color-text);
-  font-weight: 700;
-  font-size: 0.95rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.company-info {
+.feature-content {
   display: flex;
   flex-direction: column;
+  gap: 3px;
 }
 
-.company-name {
-  font-size: 0.95rem;
+.feature-heading {
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--color-text);
+  line-height: 1.3;
 }
 
-.role-name {
-  font-size: 0.78rem;
+.feature-desc {
+  font-size: 0.82rem;
   color: var(--color-text-muted);
-}
-
-.status-pill {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: var(--radius-xs);
-}
-
-.status-active {
-  background: var(--color-warning-bg);
-  border: 1px solid rgba(201, 162, 75, 0.3);
-  color: var(--color-accent);
-}
-
-/* Stepper Timeline */
-.pipeline-stepper {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 2;
-}
-
-.step-indicator {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all var(--transition);
-}
-
-.step-completed .step-indicator {
-  background: var(--color-success);
-  color: #ffffff;
-}
-
-.step-current .step-indicator {
-  background: var(--color-accent);
-  position: relative;
-}
-
-.pulse-ring {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #14161A;
-}
-
-.step-upcoming .step-indicator {
-  background: #252930;
-  border: 1px solid var(--color-border);
-}
-
-.step-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.step-label {
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-.step-time {
-  font-size: 0.68rem;
-  color: var(--color-text-muted);
-}
-
-.step-connector {
-  flex: 1;
-  height: 2px;
-  background: var(--color-border);
-  margin: 0 6px;
-  margin-top: -20px;
-}
-
-.step-connector.completed {
-  background: var(--color-success);
-}
-
-.step-connector.active {
-  background: var(--color-accent);
-}
-
-/* Stats Footer */
-.hero-stats {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding-top: 6px;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-value {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-text);
-  font-family: var(--font-heading, sans-serif);
-}
-
-.stat-label {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-
-.stat-divider {
-  width: 1px;
-  height: 28px;
-  background: var(--color-border);
+  line-height: 1.45;
 }
 
 /* ==========================================================================
@@ -456,13 +333,10 @@
     max-width: 100%;
   }
 
-  .pipeline-card {
+  .feature-stack {
     width: 100%;
     max-width: 520px;
-  }
-
-  .hero-stats {
-    justify-content: center;
+    text-align: left;
   }
 }
 
@@ -474,8 +348,7 @@
     padding: 16px 12px 32px;
   }
 
-  .pipeline-card,
-  .hero-stats {
+  .feature-stack {
     display: none;
   }
 
