@@ -14,10 +14,10 @@ build_output*.log
 .env.local
 .env.*.local
 
-# Uploads directory contents (ignore uploaded files, keep folder)
-backend/uploads/resumes/*
-!backend/uploads/resumes/.gitkeep
+# Uploads (local temporary files)
 uploads/
+backend/uploads/
+
 
 # OS and Editor files
 .DS_Store
