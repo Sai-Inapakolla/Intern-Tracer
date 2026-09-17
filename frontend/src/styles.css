@@ -13,6 +13,7 @@
   --bg-glass-elevated: rgba(255, 255, 255, 0.08);
 
   --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-color: rgba(255, 255, 255, 0.08);
   --border-focus: #6366f1;
   --border-highlight: rgba(99, 102, 241, 0.35);
 
@@ -23,8 +24,10 @@
 
   /* Brand Accents */
   --primary: #6366f1;
+  --primary-light: #818cf8;
   --primary-hover: #4f46e5;
   --primary-glow: rgba(99, 102, 241, 0.3);
+  --gradient-primary: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
 
   --success: #10b981;
   --success-bg: rgba(16, 185, 129, 0.12);
@@ -196,7 +199,88 @@ a {
   background: rgba(255, 255, 255, 0.12);
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.24);
+/* Global Form Controls & Inputs */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.req {
+  color: #f43f5e;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.95rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  z-index: 2;
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: #818cf8;
+}
+
+.form-input {
+  width: 100%;
+  background: rgba(11, 15, 25, 0.85) !important;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.78rem 1rem 0.78rem 2.65rem;
+  color: var(--text-primary) !important;
+  font-family: inherit;
+  font-size: 0.92rem;
+  transition: all var(--transition);
+  box-sizing: border-box;
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: rgba(15, 23, 42, 0.95) !important;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+/* Fix browser autofill white background */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #0e1526 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  transition: background-color 5000s ease-in-out 0s;
+  caret-color: #fff;
+}
+
+.field-error {
+  color: #fca5a5;
+  font-size: 0.78rem;
+  margin-top: 0.4rem;
 }
 
