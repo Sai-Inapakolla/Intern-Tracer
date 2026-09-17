@@ -11,7 +11,7 @@
 }
 
 /* ==========================================================================
-   LEFT SECTION: Hero & Feature List
+   LEFT SECTION: Hero & Feature List (Light Theme)
    ========================================================================== */
 .hero-panel {
   display: flex;
@@ -24,22 +24,22 @@
   align-items: center;
   gap: 8px;
   align-self: flex-start;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 9999px;
-  background: rgba(99, 102, 241, 0.08);
-  border: 1px solid rgba(99, 102, 241, 0.25);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   font-size: 0.78rem;
   font-weight: 600;
-  color: #a5b4fc;
+  color: #4f46e5;
   letter-spacing: 0.02em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .badge-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #6366f1;
-  box-shadow: 0 0 6px rgba(99, 102, 241, 0.8);
+  background: #4f46e5;
 }
 
 .hero-title {
@@ -47,18 +47,18 @@
   font-size: clamp(2rem, 3.2vw, 2.75rem);
   font-weight: 700;
   line-height: 1.18;
-  color: #f8fafc;
+  color: #0f172a;
   letter-spacing: -0.03em;
 }
 
 .hero-highlight {
-  color: #818cf8;
+  color: #4f46e5;
 }
 
 .hero-description {
   font-size: 1rem;
   line-height: 1.6;
-  color: #94a3b8;
+  color: #475569;
   max-width: 480px;
 }
 
@@ -66,7 +66,7 @@
 .feature-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   margin-top: 8px;
 }
 
@@ -74,19 +74,20 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  background: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 10px;
   padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .feature-icon {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.25);
-  color: #818cf8;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #4f46e5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,7 +103,7 @@
 .feature-text strong {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #f8fafc;
+  color: #0f172a;
 }
 
 .feature-text span {
@@ -112,7 +113,7 @@
 }
 
 /* ==========================================================================
-   RIGHT SECTION: Modern Professional Register Card
+   RIGHT SECTION: Modern Professional Clean Light Register Card
    ========================================================================== */
 .form-panel {
   display: flex;
@@ -122,11 +123,11 @@
 .form-card {
   width: 100%;
   max-width: 420px;
-  background: #0f172a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
   padding: 34px 30px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
 }
 
 .form-header {
@@ -136,14 +137,14 @@
 .form-title {
   font-size: 1.45rem;
   font-weight: 700;
-  color: #f8fafc;
+  color: #0f172a;
   margin-bottom: 4px;
   letter-spacing: -0.02em;
 }
 
 .form-subtitle {
   font-size: 0.85rem;
-  color: #94a3b8;
+  color: #64748b;
   line-height: 1.4;
 }
 
@@ -152,9 +153,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.25);
-  color: #fca5a5;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
   padding: 10px 14px;
   border-radius: 8px;
   font-size: 0.84rem;
@@ -163,7 +164,7 @@
 
 .alert-svg {
   flex-shrink: 0;
-  color: #ef4444;
+  color: #dc2626;
 }
 
 /* Form Controls */
@@ -176,7 +177,7 @@
 .field-label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #cbd5e1;
+  color: #334155;
   margin-bottom: 5px;
 }
 
@@ -195,34 +196,36 @@
 }
 
 .field-control:focus-within .field-icon {
-  color: #818cf8;
+  color: #4f46e5;
 }
 
 .form-input {
   width: 100%;
-  background: #090d16 !important;
-  border: 1px solid #1e293b !important;
+  background: #f8fafc !important;
+  border: 1px solid #cbd5e1 !important;
   border-radius: 8px !important;
   padding: 9px 14px 9px 38px !important;
-  color: #f8fafc !important;
+  color: #0f172a !important;
   font-family: inherit;
   font-size: 0.88rem;
   line-height: 1.4;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
 }
 
 .form-input::placeholder {
-  color: #475569;
+  color: #94a3b8;
 }
 
 .form-input:focus {
-  border-color: #6366f1 !important;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18) !important;
+  background: #ffffff !important;
+  border-color: #4f46e5 !important;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
 }
 
 .form-input.input-error {
   border-color: #ef4444 !important;
+  background: #fff5f5 !important;
 }
 
 .password-input {
@@ -246,12 +249,12 @@
 }
 
 .toggle-pw-btn:hover {
-  color: #cbd5e1;
+  color: #0f172a;
 }
 
 .error-msg {
   font-size: 0.76rem;
-  color: #f87171;
+  color: #dc2626;
   margin-top: 4px;
 }
 
@@ -260,7 +263,7 @@
   width: 100%;
   background: #4f46e5;
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid transparent;
   border-radius: 8px;
   padding: 11px 16px;
   font-size: 0.92rem;
@@ -271,12 +274,14 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background-color 0.15s ease, transform 0.1s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
   margin-top: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .btn-submit:hover:not(:disabled) {
   background: #4338ca;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
 }
 
 .btn-submit:active:not(:disabled) {
@@ -305,7 +310,7 @@
 .form-footer {
   margin-top: 20px;
   padding-top: 14px;
-  border-top: 1px solid #1e293b;
+  border-top: 1px solid #e2e8f0;
   text-align: center;
   font-size: 0.84rem;
   color: #64748b;
@@ -316,14 +321,14 @@
 }
 
 .register-link {
-  color: #818cf8;
+  color: #4f46e5;
   font-weight: 600;
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .register-link:hover {
-  color: #c7d2fe;
+  color: #3730a3;
   text-decoration: underline;
 }
 
