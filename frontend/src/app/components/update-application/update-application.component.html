@@ -1,98 +1,164 @@
-<div class="update-application-container">
-  <h1>Update Application</h1>
+<div class="update-application-container fade-slide">
+  <div class="form-header">
+    <button class="back-link" (click)="cancel()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span>Back to Board</span>
+    </button>
+    <h1>Update Application Details</h1>
+    <p class="subtitle">Modify stage, log interview feedback, and update documents.</p>
+  </div>
 
-  <div class="form-container">
-    <form [formGroup]="applicationForm" (ngSubmit)="updateApplication()" *ngIf="applicationForm">
-      <div class="form-group">
-        <label for="company">Company Name *</label>
-        <input
-          type="text"
-          id="company"
-          formControlName="company"
-          class="form-input"
-          placeholder="e.g., Google, Microsoft"
-        />
-        <span class="error" *ngIf="applicationForm.get('company')?.invalid && applicationForm.get('company')?.touched">
-          Company name is required
-        </span>
+  <div class="form-container" *ngIf="applicationForm">
+    <form [formGroup]="applicationForm" (ngSubmit)="updateApplication()">
+      <div class="form-grid">
+        <!-- Company Field -->
+        <div class="form-group">
+          <label for="company">Company Name <span class="req">*</span></label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21h18M3 7v14M21 7v14M9 3h6v4H9zM9 11h2M9 15h2M13 11h2M13 15h2"></path>
+            </svg>
+            <input
+              type="text"
+              id="company"
+              formControlName="company"
+              class="form-input"
+              placeholder="e.g., Google, Microsoft"
+            />
+          </div>
+          <span class="field-error" *ngIf="applicationForm.get('company')?.invalid && applicationForm.get('company')?.touched">
+            Company name is required
+          </span>
+        </div>
+
+        <!-- Role Field -->
+        <div class="form-group">
+          <label for="role">Job Role <span class="req">*</span></label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <input
+              type="text"
+              id="role"
+              formControlName="role"
+              class="form-input"
+              placeholder="e.g., Software Engineer"
+            />
+          </div>
+          <span class="field-error" *ngIf="applicationForm.get('role')?.invalid && applicationForm.get('role')?.touched">
+            Job role is required
+          </span>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="role">Job Role *</label>
-        <input
-          type="text"
-          id="role"
-          formControlName="role"
-          class="form-input"
-          placeholder="e.g., Software Engineer, Product Manager"
-        />
-        <span class="error" *ngIf="applicationForm.get('role')?.invalid && applicationForm.get('role')?.touched">
-          Job role is required
-        </span>
+      <div class="form-grid">
+        <!-- Applied Date Field -->
+        <div class="form-group">
+          <label for="appliedDate">Applied Date <span class="req">*</span></label>
+          <div class="input-wrapper">
+            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <input
+              type="date"
+              id="appliedDate"
+              formControlName="appliedDate"
+              class="form-input"
+            />
+          </div>
+          <span class="field-error" *ngIf="applicationForm.get('appliedDate')?.invalid && applicationForm.get('appliedDate')?.touched">
+            Applied date is required
+          </span>
+        </div>
+
+        <!-- Status Field -->
+        <div class="form-group">
+          <label for="status">Current Status <span class="req">*</span></label>
+          <div class="input-wrapper">
+            <select id="status" formControlName="status" class="form-input form-select">
+              <option *ngFor="let status of statusOptions" [value]="status">
+                {{ status }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
 
+      <!-- Notes Field -->
       <div class="form-group">
-        <label for="appliedDate">Applied Date *</label>
-        <input
-          type="date"
-          id="appliedDate"
-          formControlName="appliedDate"
-          class="form-input"
-        />
-        <span class="error" *ngIf="applicationForm.get('appliedDate')?.invalid && applicationForm.get('appliedDate')?.touched">
-          Applied date is required
-        </span>
-      </div>
-
-      <div class="form-group">
-        <label for="status">Status *</label>
-        <select id="status" formControlName="status" class="form-input">
-          <option *ngFor="let status of statusOptions" [value]="status">
-            {{ status }}
-          </option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="notes">Notes</label>
+        <label for="notes">Notes & Feedback</label>
         <textarea
           id="notes"
           formControlName="notes"
           class="form-textarea"
-          placeholder="Add any additional notes about the application..."
+          placeholder="Update notes, questions asked, interviewer names, or next steps..."
           rows="4"
         ></textarea>
       </div>
 
+      <!-- Resume Section -->
       <div class="form-group">
-        <label for="resume">Resume</label>
-        <div *ngIf="existingResumeUrl" style="margin-bottom: 0.5rem;">
-          <a [href]="getResumeFullUrl(existingResumeUrl)" target="_blank" rel="noopener noreferrer" style="color: #6366f1; text-decoration: underline; font-size: 0.9rem;">
-            📄 View Current Resume
-          </a>
+        <label for="resume">Resume Attachment</label>
+        
+        <!-- Existing Resume Badge if present -->
+        <div *ngIf="existingResumeUrl && !selectedFile" class="existing-resume-card">
+          <div class="existing-file-info">
+            <span class="file-icon">📄</span>
+            <div class="file-details">
+              <span class="file-label">Current Attached Resume</span>
+              <a [href]="getResumeFullUrl(existingResumeUrl)" target="_blank" rel="noopener noreferrer" class="link-view">
+                Open Resume File ↗
+              </a>
+            </div>
+          </div>
+          <span class="replace-hint">Choose a new file below to replace it</span>
         </div>
-        <input
-          type="file"
-          id="resume"
-          (change)="onFileSelected($event)"
-          accept=".pdf,.doc,.docx"
-          class="form-input"
-        />
-        <small style="color: #94a3b8; font-size: 0.8rem;" *ngIf="existingResumeUrl">
-          Select a new file to replace the existing resume
-        </small>
+
+        <!-- Upload Dropzone -->
+        <div class="dropzone-box" [class.has-file]="selectedFile">
+          <input
+            type="file"
+            id="resume"
+            (change)="onFileSelected($event)"
+            accept=".pdf,.doc,.docx"
+            class="file-hidden-input"
+          />
+          <div class="dropzone-content" *ngIf="!selectedFile">
+            <div class="drop-icon">📎</div>
+            <div class="drop-text">
+              <span class="drop-primary">Select new resume</span> to replace existing
+            </div>
+            <span class="drop-limit">Supports PDF, DOC, DOCX (Max 5MB)</span>
+          </div>
+
+          <div class="selected-file-preview" *ngIf="selectedFile">
+            <div class="file-info">
+              <span class="file-icon">📄</span>
+              <div class="file-meta">
+                <span class="file-name">{{ selectedFile.name }} (New)</span>
+                <span class="file-size">{{ (selectedFile.size / 1024).toFixed(1) }} KB</span>
+              </div>
+            </div>
+            <button type="button" class="btn-clear-file" (click)="selectedFile = null; $event.stopPropagation()">✕</button>
+          </div>
+        </div>
       </div>
 
-      <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <!-- Error Message Banner -->
+      <div class="error-banner" *ngIf="errorMessage">
+        ⚠️ {{ errorMessage }}
+      </div>
 
+      <!-- Submit Actions -->
       <div class="button-group">
-        <button
-          type="submit"
-          class="btn btn-primary"
-          [disabled]="loading || applicationForm.invalid"
-        >
-          {{ loading ? 'Updating...' : 'Update Application' }}
-        </button>
         <button
           type="button"
           class="btn btn-secondary"
@@ -101,7 +167,16 @@
         >
           Cancel
         </button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="loading || applicationForm.invalid"
+        >
+          <span *ngIf="loading" class="spinner-small"></span>
+          <span>{{ loading ? 'Saving Changes...' : 'Save Changes' }}</span>
+        </button>
       </div>
     </form>
   </div>
 </div>
+

@@ -1,17 +1,40 @@
-<nav class="navbar">
+<header class="navbar">
   <div class="nav-container">
     <a routerLink="/applications" class="navbar-brand">
-      <span class="brand-mark">📋 InternTracker</span>
-      <span class="brand-sub">Manage your internship applications</span>
+      <div class="brand-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-title">
+          <span>Intern</span><span class="brand-accent">Tracker</span>
+          <span class="live-pill">Live</span>
+        </div>
+        <span class="brand-sub">Career Pipeline & Application Hub</span>
+      </div>
     </a>
 
     <div class="nav-links">
       <a routerLink="/applications" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
-        Dashboard
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span>Board</span>
       </a>
+
       <a routerLink="/create" routerLinkActive="active" class="nav-cta">
-        <span>+</span> New Application
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span>New Application</span>
       </a>
     </div>
   </div>
-</nav>
+</header>
+
