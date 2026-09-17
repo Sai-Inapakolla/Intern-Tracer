@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -20,7 +20,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -56,17 +57,21 @@ export class RegisterComponent implements OnInit {
 
     this.loading = true;
     this.errorMessage = '';
+    this.cdr.detectChanges();
 
     const { name, email, password } = this.registerForm.value;
 
     this.authService.register({ name, email, password }).subscribe({
       next: () => {
         this.loading = false;
+        this.cdr.detectChanges();
         this.router.navigate(['/applications']);
       },
       error: (err) => {
         this.loading = false;
-        this.errorMessage = err.error?.message || 'Error creating account. Please try again.';
+        this.errorMessage = err.error?.message || (err.status === 0 ? 'Cannot connect to backend server. Please verify backend is running on port 3000.' : 'Error creating account. Please try again.');
+        this.cdr.detectChanges();
+        console.error('Registration error:', err);
       }
     });
   }

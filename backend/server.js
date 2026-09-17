@@ -8,7 +8,10 @@ const { errorHandler, notFoundHandler } = require('./middleware/error-handler');
 
 const app = express();
 
-app.use(cors({ origin: env.corsOrigin }));
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 app.use(express.json());
 
 
