@@ -5,7 +5,7 @@
   --font-heading: 'Space Grotesk', sans-serif;
 
   /* Premium Modern Palette (Slate & Vibrant Accents) */
-  --bg-base: #F0F6FF;
+  --bg-base: #0A192F;
   --bg-surface: #111827;
   --bg-card: rgba(17, 24, 39, 0.85);
   --bg-card-hover: rgba(30, 41, 59, 0.9);
@@ -68,14 +68,14 @@
 html, body {
   min-height: 100%;
   font-family: var(--font-main);
-  background-color: #F0F6FF;
+  background-color: #0A192F;
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background-color: #F0F6FF;
+  background-color: #0A192F;
   background-image: none;
   min-height: 100vh;
 }
