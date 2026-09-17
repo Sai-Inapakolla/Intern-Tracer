@@ -57,6 +57,12 @@
               <strong>Notes:</strong>
               <p>{{ application.notes }}</p>
             </div>
+
+            <div *ngIf="application.resumeUrl" class="resume-link" style="margin-top: 0.75rem;">
+              <a [href]="getResumeFullUrl(application.resumeUrl)" target="_blank" rel="noopener noreferrer" style="color: #6366f1; font-weight: 500; font-size: 0.875rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+                <span>📄</span> View Resume
+              </a>
+            </div>
           </div>
         </div>
 

@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Angular build outputs and cache
+.angular/
+dist/
+build_output*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Uploads directory contents (ignore uploaded files, keep folder)
+backend/uploads/resumes/*
+!backend/uploads/resumes/.gitkeep
+uploads/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

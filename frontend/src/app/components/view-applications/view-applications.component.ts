@@ -80,6 +80,10 @@ export class ViewApplicationsComponent implements OnInit {
     return colors[status];
   }
 
+  getResumeFullUrl(url?: string): string {
+    return this.service.getResumeFullUrl(url);
+  }
+
   formatDate(date: Date | undefined): string {
     if (!date) return '';
     return new Date(date).toLocaleDateString('en-US', {

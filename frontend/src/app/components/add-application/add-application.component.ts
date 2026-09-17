@@ -61,7 +61,25 @@ export class AddApplicationComponent implements OnInit {
       notes: formValue.notes
     };
 
-    this.service.createApplication(newApplication).subscribe({
+    if (this.selectedFile) {
+      this.service.uploadResume(this.selectedFile).subscribe({
+        next: (uploadRes) => {
+          newApplication.resumeUrl = uploadRes.resumeUrl;
+          this.submitApplication(newApplication);
+        },
+        error: (err) => {
+          this.loading = false;
+          this.errorMessage = 'Error uploading resume. Please check file format and size.';
+          console.error('Upload error:', err);
+        }
+      });
+    } else {
+      this.submitApplication(newApplication);
+    }
+  }
+
+  private submitApplication(application: Application): void {
+    this.service.createApplication(application).subscribe({
       next: () => {
         this.loading = false;
         this.router.navigate(['/applications']);

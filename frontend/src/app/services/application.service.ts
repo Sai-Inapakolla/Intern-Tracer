@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Application } from '../models/application.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApplicationService {
 
-  private apiUrl = 'http://localhost:3000/api/applications';
+  private apiUrl = environment.apiUrl;
+  private fileBaseUrl = environment.fileBaseUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -37,4 +39,13 @@ export class ApplicationService {
     formData.append('resume', file);
     return this.http.post<{ resumeUrl: string }>(`${this.apiUrl}/upload`, formData);
   }
+
+  getResumeFullUrl(resumeUrl?: string): string {
+    if (!resumeUrl) return '';
+    if (resumeUrl.startsWith('http://') || resumeUrl.startsWith('https://')) {
+      return resumeUrl;
+    }
+    return `${this.fileBaseUrl}${resumeUrl.startsWith('/') ? '' : '/'}${resumeUrl}`;
+  }
 }
+

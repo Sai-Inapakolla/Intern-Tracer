@@ -64,6 +64,25 @@
         ></textarea>
       </div>
 
+      <div class="form-group">
+        <label for="resume">Resume</label>
+        <div *ngIf="existingResumeUrl" style="margin-bottom: 0.5rem;">
+          <a [href]="getResumeFullUrl(existingResumeUrl)" target="_blank" rel="noopener noreferrer" style="color: #6366f1; text-decoration: underline; font-size: 0.9rem;">
+            📄 View Current Resume
+          </a>
+        </div>
+        <input
+          type="file"
+          id="resume"
+          (change)="onFileSelected($event)"
+          accept=".pdf,.doc,.docx"
+          class="form-input"
+        />
+        <small style="color: #94a3b8; font-size: 0.8rem;" *ngIf="existingResumeUrl">
+          Select a new file to replace the existing resume
+        </small>
+      </div>
+
       <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
 
       <div class="button-group">

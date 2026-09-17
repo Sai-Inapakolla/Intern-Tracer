@@ -16,12 +16,14 @@ export class UpdateApplicationComponent implements OnInit {
   applicationForm!: FormGroup;
   statusOptions: ApplicationStatus[] = ['Applied', 'Interview', 'Rejected', 'Offer'];
   applicationId: string = '';
+  existingResumeUrl?: string;
+  selectedFile: File | null = null;
   loading = false;
   errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
-    private service: ApplicationService,
+    public service: ApplicationService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -36,6 +38,7 @@ export class UpdateApplicationComponent implements OnInit {
   loadApplication(): void {
     this.service.getApplication(this.applicationId).subscribe({
       next: (application: Application) => {
+        this.existingResumeUrl = application.resumeUrl;
         this.initializeForm(application);
       },
       error: (err) => {
@@ -61,6 +64,14 @@ export class UpdateApplicationComponent implements OnInit {
     return d.toISOString().split('T')[0];
   }
 
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+  }
+
+  getResumeFullUrl(url?: string): string {
+    return this.service.getResumeFullUrl(url);
+  }
+
   updateApplication(): void {
     if (this.applicationForm.invalid) {
       this.errorMessage = 'Please fill in all required fields';
@@ -76,10 +87,29 @@ export class UpdateApplicationComponent implements OnInit {
       role: formValue.role,
       appliedDate: new Date(formValue.appliedDate),
       status: formValue.status,
-      notes: formValue.notes
+      notes: formValue.notes,
+      resumeUrl: this.existingResumeUrl
     };
 
-    this.service.updateApplication(this.applicationId, updatedApplication).subscribe({
+    if (this.selectedFile) {
+      this.service.uploadResume(this.selectedFile).subscribe({
+        next: (uploadRes) => {
+          updatedApplication.resumeUrl = uploadRes.resumeUrl;
+          this.submitUpdate(updatedApplication);
+        },
+        error: (err) => {
+          this.loading = false;
+          this.errorMessage = 'Error uploading resume. Please check file format and size.';
+          console.error('Upload error:', err);
+        }
+      });
+    } else {
+      this.submitUpdate(updatedApplication);
+    }
+  }
+
+  private submitUpdate(application: Application): void {
+    this.service.updateApplication(this.applicationId, application).subscribe({
       next: () => {
         this.loading = false;
         this.router.navigate(['/applications']);
