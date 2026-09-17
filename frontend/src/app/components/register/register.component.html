@@ -1,143 +1,207 @@
-<div class="auth-page-container fade-slide">
-  <div class="auth-card">
-    <div class="auth-header">
-      <div class="auth-icon-badge">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-          <circle cx="8.5" cy="7.5" r="4"></circle>
-          <line x1="20" y1="8" x2="20" y2="14"></line>
-          <line x1="23" y1="11" x2="17" y2="11"></line>
+<div class="login-split-layout fade-slide">
+  <!-- Left Column: Hero Brand & Benefits -->
+  <section class="hero-panel">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      <span class="badge-text">Get Started in Seconds</span>
+    </div>
+
+    <h1 class="hero-title">
+      Your career pipeline,<br />
+      <span class="hero-highlight">organized from day one.</span>
+    </h1>
+
+    <p class="hero-description">
+      Create your free InternTracker workspace to centralize applications, track interview progression, and organize recruiter communications in one place.
+    </p>
+
+    <!-- Visual Feature Highlights -->
+    <div class="feature-list">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <strong>Private Workspace</strong>
+          <span>Your applications and interview feedback are strictly isolated to your account.</span>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <strong>Cloud Resume Hosting</strong>
+          <span>Upload PDF resumes directly with instant in-browser preview links.</span>
+        </div>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div class="feature-text">
+          <strong>Stage Tracking & Analytics</strong>
+          <span>Real-time KPI metrics for applied, interviews, offers, and rejections.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right Column: Registration Form -->
+  <section class="form-panel">
+    <div class="form-card">
+      <div class="form-header">
+        <h2 class="form-title">Create your account</h2>
+        <p class="form-subtitle">Start tracking your applications with your private pipeline</p>
+      </div>
+
+      <!-- Error Notification -->
+      <div *ngIf="errorMessage" class="error-alert" role="alert">
+        <svg class="alert-svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
         </svg>
-      </div>
-      <h2>Create Account</h2>
-      <p class="auth-subtitle">Get started with your private internship application dashboard</p>
-    </div>
-
-    <!-- Error Banner -->
-    <div *ngIf="errorMessage" class="auth-alert error-banner">
-      <span class="alert-icon">⚠️</span>
-      <span>{{ errorMessage }}</span>
-    </div>
-
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="auth-form">
-      <!-- Full Name Field -->
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <div class="input-wrapper">
-          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
-          <input
-            type="text"
-            id="name"
-            formControlName="name"
-            class="form-input"
-            placeholder="e.g. Sai Inapakolla"
-            autocomplete="name"
-          />
-        </div>
-        <span class="field-error" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
-          Please enter your full name (at least 2 characters)
-        </span>
+        <span>{{ errorMessage }}</span>
       </div>
 
-      <!-- Email Field -->
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <div class="input-wrapper">
-          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-            <polyline points="22,6 12,13 2,6"></polyline>
-          </svg>
-          <input
-            type="email"
-            id="email"
-            formControlName="email"
-            class="form-input"
-            placeholder="you@domain.com"
-            autocomplete="email"
-          />
-        </div>
-        <span class="field-error" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
-          Please enter a valid email address
-        </span>
-      </div>
-
-      <!-- Password Field -->
-      <div class="form-group">
-        <label for="password">Password</label>
-        <div class="input-wrapper">
-          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            id="password"
-            formControlName="password"
-            class="form-input"
-            placeholder="Min. 6 characters"
-            autocomplete="new-password"
-          />
-          <button
-            type="button"
-            class="btn-toggle-pw"
-            (click)="togglePasswordVisibility()"
-            tabindex="-1"
-            title="Toggle password view"
-          >
-            <svg *ngIf="!showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-              <circle cx="12" cy="12" r="3"></circle>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" novalidate>
+        <!-- Name Field -->
+        <div class="form-field">
+          <label for="name" class="field-label">Full Name</label>
+          <div class="field-control">
+            <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
             </svg>
-            <svg *ngIf="showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
-              <line x1="1" y1="1" x2="23" y2="23"></line>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-input"
+              [class.input-error]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
+              placeholder="e.g. Sai Inapakolla"
+              autocomplete="name"
+            />
+          </div>
+          <p class="error-msg" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+            Please enter your full name (at least 2 characters)
+          </p>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-field">
+          <label for="email" class="field-label">Email address</label>
+          <div class="field-control">
+            <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
             </svg>
-          </button>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              class="form-input"
+              [class.input-error]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+              placeholder="name@company.com"
+              autocomplete="email"
+            />
+          </div>
+          <p class="error-msg" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            Please enter a valid email address
+          </p>
         </div>
-        <span class="field-error" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
-          Password must be at least 6 characters
-        </span>
-      </div>
 
-      <!-- Confirm Password Field -->
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <div class="input-wrapper">
-          <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-          </svg>
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            id="confirmPassword"
-            formControlName="confirmPassword"
-            class="form-input"
-            placeholder="Re-enter password"
-            autocomplete="new-password"
-          />
+        <!-- Password Field -->
+        <div class="form-field">
+          <label for="password" class="field-label">Password</label>
+          <div class="field-control">
+            <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="password"
+              formControlName="password"
+              class="form-input password-input"
+              [class.input-error]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+              placeholder="Min. 6 characters"
+              autocomplete="new-password"
+            />
+            <button
+              type="button"
+              class="toggle-pw-btn"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="showPassword ? 'Hide password' : 'Show password'"
+            >
+              <svg *ngIf="!showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg *ngIf="showPassword" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
+            </button>
+          </div>
+          <p class="error-msg" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            Password must be at least 6 characters
+          </p>
         </div>
-        <span class="field-error" *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched">
-          Passwords do not match
-        </span>
-      </div>
 
-      <!-- Submit Button -->
-      <button
-        type="submit"
-        class="btn btn-primary btn-auth-submit"
-        [disabled]="loading || registerForm.invalid"
-      >
-        <span *ngIf="loading" class="spinner-small"></span>
-        <span>{{ loading ? 'Creating Account...' : 'Sign Up & Continue' }}</span>
-      </button>
+        <!-- Confirm Password Field -->
+        <div class="form-field">
+          <label for="confirmPassword" class="field-label">Confirm Password</label>
+          <div class="field-control">
+            <svg class="field-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              class="form-input password-input"
+              [class.input-error]="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched"
+              placeholder="Re-enter password"
+              autocomplete="new-password"
+            />
+          </div>
+          <p class="error-msg" *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched">
+            Passwords do not match
+          </p>
+        </div>
 
-      <!-- Footer / Switch to Login -->
-      <div class="auth-footer">
-        <p>Already have an account? <a routerLink="/login" class="auth-link">Sign In &rarr;</a></p>
-      </div>
-    </form>
-  </div>
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          class="btn-submit"
+          [disabled]="loading || registerForm.invalid"
+        >
+          <span *ngIf="loading" class="spinner"></span>
+          <span>{{ loading ? 'Creating account...' : 'Create Account & Continue' }}</span>
+        </button>
+
+        <!-- Footer -->
+        <div class="form-footer">
+          <span>Already have an account?</span>
+          <a routerLink="/login" class="register-link">Sign In &rarr;</a>
+        </div>
+      </form>
+    </div>
+  </section>
 </div>
