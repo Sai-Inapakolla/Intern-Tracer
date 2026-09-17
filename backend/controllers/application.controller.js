@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const mongoose = require('mongoose');
 const Application = require('../models/Application');
 const { isCloudinaryConfigured, uploadToCloudinary } = require('../config/cloudinary');
@@ -81,24 +79,12 @@ async function uploadApplicationResume(req, res, next) {
   try {
     if (!req.file) throw badRequest('Resume file is required');
 
-    let resumeUrl = '';
-
-    if (isCloudinaryConfigured) {
-      const result = await uploadToCloudinary(req.file.buffer, req.file.originalname);
-      resumeUrl = result.secure_url;
-    } else {
-      const uploadDir = path.resolve(process.cwd(), 'uploads', 'resumes');
-      if (!fs.existsSync(uploadDir)) {
-        fs.mkdirSync(uploadDir, { recursive: true });
-      }
-      const safeOriginal = req.file.originalname.replace(/\s+/g, '_');
-      const filename = `${Date.now()}-${safeOriginal}`;
-      const filePath = path.join(uploadDir, filename);
-      fs.writeFileSync(filePath, req.file.buffer);
-      resumeUrl = `/uploads/resumes/${filename}`;
+    if (!isCloudinaryConfigured) {
+      throw badRequest('Cloudinary is not configured. Please provide CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET in .env');
     }
 
-    res.status(201).json({ resumeUrl });
+    const result = await uploadToCloudinary(req.file.buffer, req.file.originalname);
+    res.status(201).json({ resumeUrl: result.secure_url });
   } catch (error) {
     next(error);
   }
@@ -112,4 +98,5 @@ module.exports = {
   deleteApplication,
   uploadApplicationResume
 };
+
 

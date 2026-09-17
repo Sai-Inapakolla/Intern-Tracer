@@ -5,7 +5,7 @@ Node.js + Express + MongoDB backend for the Internship Tracker Angular frontend.
 ## Setup
 
 1. Copy `.env.example` to `.env`.
-2. Set `MONGODB_URI` and `PORT`.
+2. Set `MONGODB_URI`, `PORT`, and Cloudinary keys (`CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`).
 3. Install packages:
 
 ```bash

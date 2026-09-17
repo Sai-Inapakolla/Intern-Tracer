@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const { env } = require('./config/env');
 const { connectDatabase } = require('./config/database');
 const applicationRoutes = require('./routes/application.routes');
@@ -10,7 +9,7 @@ const app = express();
 
 app.use(cors({ origin: env.corsOrigin }));
 app.use(express.json());
-app.use('/uploads', express.static(path.resolve(process.cwd(), 'uploads')));
+
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
