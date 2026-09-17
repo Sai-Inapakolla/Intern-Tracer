@@ -11,54 +11,27 @@
 }
 
 /* ==========================================================================
-   LEFT SECTION: Hero & Feature List (Light Theme)
+   LEFT SECTION: Hero & Feature List
    ========================================================================== */
 .hero-panel {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  align-self: flex-start;
-  padding: 5px 14px;
-  border-radius: 9999px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #4f46e5;
-  letter-spacing: 0.02em;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #4f46e5;
+  gap: 20px;
 }
 
 .hero-title {
-  font-family: var(--font-heading, 'Space Grotesk', sans-serif);
+  font-family: var(--font-heading, sans-serif);
   font-size: clamp(2rem, 3.2vw, 2.75rem);
   font-weight: 700;
   line-height: 1.18;
-  color: #0f172a;
+  color: var(--color-text);
   letter-spacing: -0.03em;
 }
 
-.hero-highlight {
-  color: #4f46e5;
-}
-
 .hero-description {
-  font-size: 1rem;
+  font-size: 0.98rem;
   line-height: 1.6;
-  color: #475569;
+  color: var(--color-text-muted);
   max-width: 480px;
 }
 
@@ -66,28 +39,27 @@
 .feature-list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-top: 8px;
+  gap: 12px;
+  margin-top: 6px;
 }
 
 .feature-item {
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   padding: 14px 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .feature-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: #eef2ff;
-  border: 1px solid #c7d2fe;
-  color: #4f46e5;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-xs);
+  background: #252930;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,17 +75,17 @@
 .feature-text strong {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #0f172a;
+  color: var(--color-text);
 }
 
 .feature-text span {
   font-size: 0.78rem;
-  color: #64748b;
+  color: var(--color-text-muted);
   line-height: 1.4;
 }
 
 /* ==========================================================================
-   RIGHT SECTION: Modern Professional Clean Light Register Card
+   RIGHT SECTION: Warm Paper Register Card
    ========================================================================== */
 .form-panel {
   display: flex;
@@ -123,11 +95,10 @@
 .form-card {
   width: 100%;
   max-width: 420px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  background: var(--color-paper);
+  border: 1px solid #D6D0C4;
+  border-radius: var(--radius-md);
   padding: 34px 30px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
 }
 
 .form-header {
@@ -137,14 +108,14 @@
 .form-title {
   font-size: 1.45rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #14161A;
   margin-bottom: 4px;
   letter-spacing: -0.02em;
 }
 
 .form-subtitle {
   font-size: 0.85rem;
-  color: #64748b;
+  color: #5E5950;
   line-height: 1.4;
 }
 
@@ -153,18 +124,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
+  background: #fdf2ee;
+  border: 1px solid #f6cfc3;
+  color: var(--color-danger);
   padding: 10px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-xs);
   font-size: 0.84rem;
   margin-bottom: 18px;
 }
 
 .alert-svg {
   flex-shrink: 0;
-  color: #dc2626;
+  color: var(--color-danger);
 }
 
 /* Form Controls */
@@ -177,7 +148,7 @@
 .field-label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #334155;
+  color: #38352F;
   margin-bottom: 5px;
 }
 
@@ -190,42 +161,41 @@
 .field-icon {
   position: absolute;
   left: 12px;
-  color: #64748b;
+  color: #7A7468;
   pointer-events: none;
   transition: color 0.15s ease;
 }
 
 .field-control:focus-within .field-icon {
-  color: #4f46e5;
+  color: #14161A;
 }
 
-.form-input {
+.form-card .form-input {
   width: 100%;
-  background: #f8fafc !important;
-  border: 1px solid #cbd5e1 !important;
-  border-radius: 8px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #D1CABF !important;
+  border-radius: var(--radius-xs) !important;
   padding: 9px 14px 9px 38px !important;
-  color: #0f172a !important;
+  color: #14161A !important;
   font-family: inherit;
   font-size: 0.88rem;
   line-height: 1.4;
   outline: none;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  transition: border-color 0.15s ease;
 }
 
-.form-input::placeholder {
-  color: #94a3b8;
+.form-card .form-input::placeholder {
+  color: #9C9588;
 }
 
-.form-input:focus {
-  background: #ffffff !important;
-  border-color: #4f46e5 !important;
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12) !important;
+.form-card .form-input:focus {
+  background: #FFFFFF !important;
+  border-color: var(--color-accent) !important;
 }
 
-.form-input.input-error {
-  border-color: #ef4444 !important;
-  background: #fff5f5 !important;
+.form-card .form-input.input-error {
+  border-color: var(--color-danger) !important;
+  background: #fff8f6 !important;
 }
 
 .password-input {
@@ -239,7 +209,7 @@
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #64748b;
+  color: #7A7468;
   cursor: pointer;
   padding: 4px;
   display: flex;
@@ -249,22 +219,22 @@
 }
 
 .toggle-pw-btn:hover {
-  color: #0f172a;
+  color: #14161A;
 }
 
 .error-msg {
   font-size: 0.76rem;
-  color: #dc2626;
+  color: var(--color-danger);
   margin-top: 4px;
 }
 
 /* Submit Button */
 .btn-submit {
   width: 100%;
-  background: #4f46e5;
-  color: #ffffff;
-  border: 1px solid transparent;
-  border-radius: 8px;
+  background: var(--color-accent);
+  color: #14161A;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-xs);
   padding: 11px 16px;
   font-size: 0.92rem;
   font-weight: 600;
@@ -274,14 +244,13 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  transition: background-color 0.15s ease;
   margin-top: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .btn-submit:hover:not(:disabled) {
-  background: #4338ca;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
 }
 
 .btn-submit:active:not(:disabled) {
@@ -296,8 +265,8 @@
 .spinner {
   width: 14px;
   height: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #ffffff;
+  border: 2px solid rgba(20, 22, 26, 0.3);
+  border-top-color: #14161A;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
 }
@@ -310,10 +279,10 @@
 .form-footer {
   margin-top: 20px;
   padding-top: 14px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #D6D0C4;
   text-align: center;
   font-size: 0.84rem;
-  color: #64748b;
+  color: #5E5950;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -321,15 +290,15 @@
 }
 
 .register-link {
-  color: #4f46e5;
+  color: #14161A;
   font-weight: 600;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   transition: color 0.15s ease;
 }
 
 .register-link:hover {
-  color: #3730a3;
-  text-decoration: underline;
+  color: var(--color-accent);
 }
 
 /* ==========================================================================
@@ -345,10 +314,6 @@
   .hero-panel {
     text-align: center;
     align-items: center;
-  }
-
-  .hero-badge {
-    align-self: center;
   }
 
   .hero-description {
@@ -375,7 +340,6 @@
 
   .form-card {
     padding: 28px 20px;
-    border-radius: 10px;
   }
 
   .hero-title {

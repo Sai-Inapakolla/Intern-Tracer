@@ -7,10 +7,6 @@
   <!-- Header Section -->
   <div class="header">
     <div class="title-block">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span>APPLICATION PIPELINE</span>
-      </div>
       <h1>Internship Command Center</h1>
       <p class="subtitle">Track statuses, manage interviews, keep notes, and view resumes in one place.</p>
     </div>
@@ -33,42 +29,42 @@
     </div>
   </div>
 
-  <!-- Stats Metric Cards -->
+  <!-- Stats Metric Cards (Distinct visual weight & Offers as goal state) -->
   <div class="metrics-grid">
-    <div class="metric-card">
-      <div class="metric-icon total">📊</div>
+    <div class="metric-card metric-total">
+      <div class="metric-icon">📊</div>
       <div class="metric-info">
         <span class="metric-label">Total Applications</span>
         <span class="metric-value">{{ totalCount }}</span>
       </div>
     </div>
 
-    <div class="metric-card">
-      <div class="metric-icon applied">⏳</div>
+    <div class="metric-card metric-applied">
+      <div class="metric-icon">⏳</div>
       <div class="metric-info">
         <span class="metric-label">Applied / Review</span>
         <span class="metric-value">{{ getCountByStatus('Applied') }}</span>
       </div>
     </div>
 
-    <div class="metric-card">
-      <div class="metric-icon interview">🎯</div>
+    <div class="metric-card metric-interview">
+      <div class="metric-icon">🎯</div>
       <div class="metric-info">
         <span class="metric-label">Interviews</span>
         <span class="metric-value">{{ getCountByStatus('Interview') }}</span>
       </div>
     </div>
 
-    <div class="metric-card">
-      <div class="metric-icon offer">🏆</div>
+    <div class="metric-card metric-offer">
+      <div class="metric-icon">🏆</div>
       <div class="metric-info">
         <span class="metric-label">Offers Received</span>
-        <span class="metric-value highlight">{{ getCountByStatus('Offer') }}</span>
+        <span class="metric-value">{{ getCountByStatus('Offer') }}</span>
       </div>
     </div>
 
-    <div class="metric-card">
-      <div class="metric-icon rejected">❌</div>
+    <div class="metric-card metric-rejected">
+      <div class="metric-icon">✕</div>
       <div class="metric-info">
         <span class="metric-label">Rejected</span>
         <span class="metric-value">{{ getCountByStatus('Rejected') }}</span>
