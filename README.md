@@ -53,6 +53,5 @@ npm run build
 
 ## Contributors
 
-- **[Jai Revanth Dev Chitturi](https://github.com/chitturijairevanthdev-gif)**
 - **[Sai-Inapakolla](https://github.com/Sai-Inapakolla)**
 
