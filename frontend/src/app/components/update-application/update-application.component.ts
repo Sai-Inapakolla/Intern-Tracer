@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -19,42 +19,60 @@ export class UpdateApplicationComponent implements OnInit {
   existingResumeUrl?: string;
   selectedFile: File | null = null;
   loading = false;
+  fetching = true;
   errorMessage = '';
 
   constructor(
     private fb: FormBuilder,
     public service: ApplicationService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.createEmptyForm();
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.applicationId = params['id'];
-      this.loadApplication();
-    });
-  }
-
-  loadApplication(): void {
-    this.service.getApplication(this.applicationId).subscribe({
-      next: (application: Application) => {
-        this.existingResumeUrl = application.resumeUrl;
-        this.initializeForm(application);
-      },
-      error: (err) => {
-        this.errorMessage = 'Error loading application. Please try again.';
-        console.error('Error:', err);
+      if (this.applicationId) {
+        this.loadApplication();
       }
     });
   }
 
-  initializeForm(application: Application): void {
+  createEmptyForm(): void {
     this.applicationForm = this.fb.group({
-      company: [application.company, [Validators.required, Validators.minLength(2)]],
-      role: [application.role, [Validators.required, Validators.minLength(2)]],
-      appliedDate: [this.formatDate(application.appliedDate), Validators.required],
-      status: [application.status, Validators.required],
-      notes: [application.notes || '']
+      company: ['', [Validators.required, Validators.minLength(2)]],
+      role: ['', [Validators.required, Validators.minLength(2)]],
+      appliedDate: ['', Validators.required],
+      status: ['Applied', Validators.required],
+      notes: ['']
+    });
+  }
+
+  loadApplication(): void {
+    this.fetching = true;
+    this.errorMessage = '';
+    this.service.getApplication(this.applicationId).subscribe({
+      next: (application: Application) => {
+        this.fetching = false;
+        this.existingResumeUrl = application.resumeUrl;
+        this.applicationForm.patchValue({
+          company: application.company,
+          role: application.role,
+          appliedDate: this.formatDate(application.appliedDate),
+          status: application.status,
+          notes: application.notes || ''
+        });
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        this.fetching = false;
+        this.errorMessage = 'Application not found or may have been deleted.';
+        this.cdr.detectChanges();
+        console.error('Error loading application:', err);
+      }
     });
   }
 

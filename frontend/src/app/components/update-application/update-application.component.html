@@ -11,7 +11,22 @@
     <p class="subtitle">Modify stage, log interview feedback, and update documents.</p>
   </div>
 
-  <div class="form-container" *ngIf="applicationForm">
+  <!-- Loading State -->
+  <div *ngIf="fetching" class="loading-container">
+    <div class="spinner-large"></div>
+    <p>Loading application details...</p>
+  </div>
+
+  <!-- Error Recovery State -->
+  <div *ngIf="!fetching && errorMessage" class="error-recovery-card">
+    <div class="error-icon">⚠️</div>
+    <h3>Unable to Load Application</h3>
+    <p>{{ errorMessage }}</p>
+    <button class="btn btn-primary" (click)="cancel()">Return to Dashboard</button>
+  </div>
+
+  <!-- Form Container -->
+  <div class="form-container" *ngIf="!fetching && !errorMessage">
     <form [formGroup]="applicationForm" (ngSubmit)="updateApplication()">
       <div class="form-grid">
         <!-- Company Field -->
@@ -152,11 +167,6 @@
         </div>
       </div>
 
-      <!-- Error Message Banner -->
-      <div class="error-banner" *ngIf="errorMessage">
-        ⚠️ {{ errorMessage }}
-      </div>
-
       <!-- Submit Actions -->
       <div class="button-group">
         <button
@@ -179,4 +189,3 @@
     </form>
   </div>
 </div>
-
