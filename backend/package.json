@@ -13,7 +13,7 @@
     "mongodb",
     "internship-tracker"
   ],
-  "author": "",
+  "author": "Sai-Inapakolla",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.6",

@@ -51,7 +51,8 @@ cd ../frontend
 npm run build
 ```
 
-## Contributors
+## Author & Contributor
 
 - **[Sai-Inapakolla](https://github.com/Sai-Inapakolla)**
+
 
