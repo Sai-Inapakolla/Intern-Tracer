@@ -5,11 +5,15 @@
       <h1>Internship Application Tracker</h1>
       <p class="subtitle">Organize opportunities by stage, keep interview notes, and move fast on follow-ups.</p>
     </div>
-    <button class="btn btn-secondary btn-add" (click)="addNewApplication()">+ Add Application</button>
+    <div class="actions" style="display: flex; gap: 0.75rem; align-items: center;">
+      <button class="btn btn-secondary" (click)="loadApplications()" [disabled]="applicationsLoading" title="Refresh applications">🔄 Refresh</button>
+      <button class="btn btn-secondary btn-add" (click)="addNewApplication()">+ Add Application</button>
+    </div>
   </div>
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
+  <div *ngIf="errorMessage" class="error-message" style="display: flex; justify-content: space-between; align-items: center;">
+    <span>{{ errorMessage }}</span>
+    <button class="btn btn-secondary" (click)="loadApplications()" style="padding: 0.35rem 0.75rem; font-size: 0.85rem;">Retry</button>
   </div>
 
   <div *ngIf="applicationsLoading" class="loading">

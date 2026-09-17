@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ApplicationService } from '../../services/application.service';
@@ -20,7 +20,8 @@ export class ViewApplicationsComponent implements OnInit {
   
   constructor(
     private service: ApplicationService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -29,14 +30,17 @@ export class ViewApplicationsComponent implements OnInit {
 
   loadApplications(): void {
     this.applicationsLoading = true;
+    this.errorMessage = '';
     this.service.getApplications().subscribe({
       next: (data) => {
-        this.applications = data;
+        this.applications = data || [];
         this.applicationsLoading = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
-        this.errorMessage = 'Error loading applications';
+        this.errorMessage = 'Error loading applications. Check backend connection.';
         this.applicationsLoading = false;
+        this.cdr.detectChanges();
         console.error('Error:', err);
       }
     });
