@@ -437,41 +437,6 @@
   to { transform: rotate(360deg); }
 }
 
-/* Demo Strip */
-.demo-strip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 18px;
-  padding: 10px 12px;
-  background: #090d16;
-  border: 1px dashed #1e293b;
-  border-radius: 8px;
-}
-
-.demo-text {
-  font-size: 0.8rem;
-  color: #64748b;
-}
-
-.btn-demo-autofill {
-  background: transparent;
-  border: none;
-  color: #818cf8;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.15s ease;
-}
-
-.btn-demo-autofill:hover {
-  color: #a5b4fc;
-}
-
 /* Footer Switch */
 .form-footer {
   margin-top: 22px;
