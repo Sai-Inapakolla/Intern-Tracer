@@ -22,7 +22,7 @@ function validateObjectId(id) {
 
 async function listApplications(req, res, next) {
   try {
-    const applications = await Application.find().sort({ createdAt: -1 });
+    const applications = await Application.find({ userId: req.user.id }).sort({ createdAt: -1 });
     res.json(applications);
   } catch (error) {
     next(error);
@@ -32,7 +32,7 @@ async function listApplications(req, res, next) {
 async function getApplication(req, res, next) {
   try {
     validateObjectId(req.params.id);
-    const application = await Application.findById(req.params.id);
+    const application = await Application.findOne({ _id: req.params.id, userId: req.user.id });
     if (!application) throw notFound('Application not found');
     res.json(application);
   } catch (error) {
@@ -42,7 +42,10 @@ async function getApplication(req, res, next) {
 
 async function createApplication(req, res, next) {
   try {
-    const application = await Application.create(req.body);
+    const application = await Application.create({
+      ...req.body,
+      userId: req.user.id
+    });
     res.status(201).json(application);
   } catch (error) {
     next(error);
@@ -52,8 +55,8 @@ async function createApplication(req, res, next) {
 async function updateApplication(req, res, next) {
   try {
     validateObjectId(req.params.id);
-    const application = await Application.findByIdAndUpdate(
-      req.params.id,
+    const application = await Application.findOneAndUpdate(
+      { _id: req.params.id, userId: req.user.id },
       req.body,
       { new: true, runValidators: true }
     );
@@ -67,7 +70,10 @@ async function updateApplication(req, res, next) {
 async function deleteApplication(req, res, next) {
   try {
     validateObjectId(req.params.id);
-    const application = await Application.findByIdAndDelete(req.params.id);
+    const application = await Application.findOneAndDelete({
+      _id: req.params.id,
+      userId: req.user.id
+    });
     if (!application) throw notFound('Application not found');
     res.json({ message: 'Application deleted successfully' });
   } catch (error) {

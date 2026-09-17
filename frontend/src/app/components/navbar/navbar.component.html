@@ -1,6 +1,6 @@
 <header class="navbar">
   <div class="nav-container">
-    <a routerLink="/applications" class="navbar-brand">
+    <a [routerLink]="authService.isLoggedIn ? '/applications' : '/login'" class="navbar-brand">
       <div class="brand-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -16,7 +16,8 @@
       </div>
     </a>
 
-    <div class="nav-links">
+    <!-- Navigation links for authenticated user -->
+    <div class="nav-links" *ngIf="authService.isLoggedIn">
       <a routerLink="/applications" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="7" height="7"></rect>
@@ -34,7 +35,32 @@
         </svg>
         <span>New Application</span>
       </a>
+
+      <!-- User Profile Badge & Logout -->
+      <div class="user-menu" *ngIf="authService.currentUser$ | async as user">
+        <div class="user-avatar" [title]="user.email">
+          {{ getUserInitials(user.name) }}
+        </div>
+        <span class="user-name">{{ user.name }}</span>
+        <button class="btn-logout" (click)="logout()" title="Sign Out">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation links for guest -->
+    <div class="nav-links" *ngIf="!authService.isLoggedIn">
+      <a routerLink="/login" routerLinkActive="active" class="nav-link">
+        <span>Sign In</span>
+      </a>
+      <a routerLink="/register" routerLinkActive="active" class="nav-cta">
+        <span>Get Started</span>
+      </a>
     </div>
   </div>
 </header>
-

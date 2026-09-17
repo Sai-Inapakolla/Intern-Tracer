@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { env } = require('./config/env');
 const { connectDatabase } = require('./config/database');
+const authRoutes = require('./routes/auth.routes');
 const applicationRoutes = require('./routes/application.routes');
 const { errorHandler, notFoundHandler } = require('./middleware/error-handler');
 
@@ -15,6 +16,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+app.use('/api/auth', authRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use(notFoundHandler);
 app.use(errorHandler);

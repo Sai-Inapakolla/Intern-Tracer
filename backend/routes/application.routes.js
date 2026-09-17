@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { uploadResume } = require('../middleware/upload');
+const { authenticate } = require('../middleware/auth');
 const {
   listApplications,
   getApplication,
@@ -9,6 +10,8 @@ const {
   deleteApplication,
   uploadApplicationResume
 } = require('../controllers/application.controller');
+
+router.use(authenticate);
 
 router.get('/',        listApplications);
 router.get('/:id',    getApplication);
